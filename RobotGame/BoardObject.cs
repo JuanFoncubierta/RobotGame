@@ -2,8 +2,6 @@
 
 public class BoardObject
 {
-    public BoardObject()
-    {
-
-    }
+    protected int positionX { get; set; }
+    protected int positionY { get; set; }
 }
