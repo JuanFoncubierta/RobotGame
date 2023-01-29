@@ -5,8 +5,24 @@ public class Robot:BoardObject
     public Directions.directions faceDirection;
     public Robot(string _faceDirection, int _positionX, int _positionY)
     {
-        FaceDirection = Directions.directions.Where(x => x.Value == _faceDirection).First().Key;
+        faceDirection = Directions.GetFacing(_faceDirection);
         positionX = _positionX;
         positionY = _positionY;
+        boardObjectType = BoardObjectType.Robot;
+    }
+
+    public void move()
+    {
+
+    }
+
+    public void left()
+    {
+
+    }
+
+    public void right()
+    {
+
     }
 }

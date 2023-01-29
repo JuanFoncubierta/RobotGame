@@ -7,6 +7,7 @@ public class GameBoard
     private int minY;
     private int maxX;
     private int maxY;
+
     public GameBoard(int _minX, int _minY, int _maxX, int _maxY)
     {
         ObjectsOnTheBoard = new();
@@ -14,5 +15,20 @@ public class GameBoard
         minY = _minY;
         maxX = _maxX;
         maxY = _maxY;
+    }
+
+    public void ResetGame()
+    {
+        ObjectsOnTheBoard.Clear();
+    }
+
+    public void placeRobot(string command)
+    {
+
+    }
+
+    public void placeWall(string command)
+    {
+
     }
 }

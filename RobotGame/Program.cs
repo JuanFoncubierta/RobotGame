@@ -11,7 +11,7 @@ class MainClass
         {
             string? command = Console.ReadLine();
             if (command != null)
-                InputHandler.handleCommandsForGame(command);
+                InputHandler.handleCommandsForGame(command,boardGame);
         }
     }
 }
