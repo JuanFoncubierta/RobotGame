@@ -17,7 +17,7 @@ public static class InputHandler
             report(board);
 
         if (command.ToLower() == "move")
-            ((Robot)(board.ObjectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First())).move();
+            ((Robot)(board.ObjectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First())).move(board);
 
         if (command.ToLower() == "left")
             ((Robot)(board.ObjectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First())).left();
