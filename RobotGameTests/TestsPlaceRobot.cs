@@ -43,7 +43,7 @@ internal class TestsPlaceRobot
     }
 
     [Test]
-    public void TestCorrectCommand()
+    public void TestCorrectCommand11()
     {
         RobotGame.GameBoard board = new(1, 1, 5, 5);
         board.placeRobot("place_robot 1,1,NORTH");
@@ -52,7 +52,7 @@ internal class TestsPlaceRobot
     }
 
     [Test]
-    public void Test1()
+    public void TestCorrectCommand53()
     {
         RobotGame.GameBoard board = new(1, 1, 5, 5);
         board.placeRobot("place_robot 5,3,EAST");
