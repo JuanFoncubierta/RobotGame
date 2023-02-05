@@ -1,42 +1,49 @@
-﻿namespace RobotGame;
+﻿using System.IO.Pipes;
+
+namespace RobotGame;
 
 public static class InputHandler
 {
-    public static void handleCommandsForGame(string command,GameBoard board)
+    public static string handleCommandsForGame(string command,GameBoard board)
     {
+        string answer = "";
         if (command.ToLower().StartsWith("place_robot"))
-            board.placeRobot(command);
+            answer = board.placeRobot(command);
 
         if (command.ToLower().StartsWith("place_wall"))
-            board.placeWall(command);
+            answer = board.placeWall(command);
 
         //if is not one of the above we need the robot to exist
-        if (!BoardChecker.IsThereARobot(board)) return;
+        if (!BoardChecker.IsThereARobot(board)) return "You need a robot first, try placing one";
+
+        Robot robot = (Robot)(board.objectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First());
 
         if (command.ToLower() == "report")
-            report(board);
-
-        if (command.ToLower() == "move")
-            ((Robot)(board.objectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First())).move(board);
-
-        if (command.ToLower() == "left")
-            ((Robot)(board.objectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First())).left();
-
-        if (command.ToLower() == "right")
-            ((Robot)(board.objectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First())).right();
+            answer = report(board);
 
         if (command.ToLower() == "reset")
             board.ResetGame();
 
         if (command.ToLower() == "quit")
             System.Environment.Exit(1);
+
+        if (command.ToLower() == "move")
+            robot.move(board);
+
+        if (command.ToLower() == "left")
+            robot.left();
+
+        if (command.ToLower() == "right")
+            robot.right();
+
+        return answer;
     }
 
     
 
-    public static void report(GameBoard board)
+    public static string report(GameBoard board)
     {
         Robot robot = (Robot)board.objectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First();
-        Console.WriteLine(robot.positionX + "," + robot.positionY + "," + robot.faceDirection.ToString());
+        return robot.positionX + "," + robot.positionY + "," + robot.faceDirection.ToString();
     }
 }

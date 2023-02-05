@@ -9,6 +9,7 @@ public class Robot:BoardObject
         positionX = _positionX;
         positionY = _positionY;
         boardObjectType = BoardObjectType.Robot;
+        canBeOverwritten = false;
     }
 
     public void move(GameBoard boardData)

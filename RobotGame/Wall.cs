@@ -7,5 +7,6 @@ public class Wall:BoardObject
         positionX = _positionX;
         positionY = _positionY;
         boardObjectType = BoardObjectType.Wall;
+        canBeOverwritten = true;
     }
 }

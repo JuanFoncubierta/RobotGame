@@ -16,7 +16,12 @@ class MainClass
             Console.WriteLine("Write an action:");
             string? command = Console.ReadLine();
             if (command != null)
-                InputHandler.handleCommandsForGame(command,boardGame);
+            {
+                string answer = InputHandler.handleCommandsForGame(command, boardGame);
+                if (answer != "")
+                    Console.WriteLine(answer);
+            }
+                
         }
     }
 }

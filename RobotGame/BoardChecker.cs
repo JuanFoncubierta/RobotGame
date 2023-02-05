@@ -10,7 +10,7 @@ public static class BoardChecker
 
     public static bool CoordinateOcupied(int _x, int _y, GameBoard board)
     {
-        if (board.objectsOnTheBoard.Where(x => x.positionX == _x && x.positionY == _y).First().boardObjectType == BoardObjectType.Wall) return true;
+        if (board.objectsOnTheBoard.Where(x => x.positionX == _x && x.positionY == _y).Any()) return true;
         return false;
     }
 }

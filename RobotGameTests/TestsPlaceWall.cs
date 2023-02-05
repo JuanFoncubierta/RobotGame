@@ -39,7 +39,7 @@ internal class TestsPlaceWall
     {
         RobotGame.GameBoard board = new(1, 1, 5, 5);
         board.placeWall("place_wall 1,1");
-        Assert.True(board.objectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Wall).Any() && board.objectsOnTheBoard.First().positionX == 1 && board.ObjectsOnTheBoard.First().positionY == 1);
+        Assert.True(board.objectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Wall).Any() && board.objectsOnTheBoard.First().positionX == 1 && board.objectsOnTheBoard.First().positionY == 1);
     }
 
     [Test]
