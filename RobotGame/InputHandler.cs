@@ -22,19 +22,19 @@ public static class InputHandler
             answer = report(board);
 
         if (command.ToLower() == "reset")
-            board.ResetGame();
+            answer = board.ResetGame();
 
         if (command.ToLower() == "quit")
             System.Environment.Exit(1);
 
         if (command.ToLower() == "move")
-            robot.move(board);
+            answer = robot.move(board);
 
         if (command.ToLower() == "left")
-            robot.left();
+            answer = robot.left();
 
         if (command.ToLower() == "right")
-            robot.right();
+            answer = robot.right();
 
         return answer;
     }

@@ -12,22 +12,25 @@ public class Robot:BoardObject
         canBeOverwritten = false;
     }
 
-    public void move(GameBoard boardData)
+    public string move(GameBoard boardData)
     {
         Tuple<int, int> newCoordinates = calculateNewCoordinates(boardData);
-        if (BoardChecker.CoordinateOcupied(newCoordinates.Item1,newCoordinates.Item2,boardData)) return;
+        if (BoardChecker.CoordinateOcupied(newCoordinates.Item1,newCoordinates.Item2,boardData)) return "There is something blocking the robot";
         positionX = newCoordinates.Item1;
         positionY = newCoordinates.Item2;
+        return "Robot moves";
     }
 
-    public void left()
+    public string left()
     {
         faceDirection = Directions.Left(faceDirection);
+        return "Robot turns left";
     }
 
-    public void right()
+    public string right()
     {
         faceDirection = Directions.Right(faceDirection);
+        return "Robot turns right";
     }
 
     private Tuple<int, int> calculateNewCoordinates(GameBoard boardData)

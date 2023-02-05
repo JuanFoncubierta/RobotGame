@@ -17,9 +17,10 @@ public class GameBoard
         maxY = _maxY;
     }
 
-    public void ResetGame()
+    public string ResetGame()
     {
         objectsOnTheBoard.Clear();
+        return "Game resets";
     }
 
     public string placeRobot(string command)
