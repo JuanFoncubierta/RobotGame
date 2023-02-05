@@ -14,7 +14,7 @@ public class Robot:BoardObject
     public void move(GameBoard boardData)
     {
         Tuple<int, int> newCoordinates = calculateNewCoordinates(boardData);
-        if (boardData.CoordinateOcupied(newCoordinates.Item1,newCoordinates.Item2)) return;
+        if (BoardChecker.CoordinateOcupied(newCoordinates.Item1,newCoordinates.Item2,boardData)) return;
         positionX = newCoordinates.Item1;
         positionY = newCoordinates.Item2;
     }

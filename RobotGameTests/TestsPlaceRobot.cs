@@ -7,7 +7,7 @@ internal class TestsPlaceRobot
     {
         RobotGame.GameBoard board = new(1, 1, 5, 5);
         board.placeRobot("");
-        Assert.True(board.ObjectsOnTheBoard.Count() == 0);
+        Assert.True(board.objectsOnTheBoard.Count() == 0);
     }
 
     [Test]
@@ -15,7 +15,7 @@ internal class TestsPlaceRobot
     {
         RobotGame.GameBoard board = new(1, 1, 5, 5);
         board.placeRobot("place_robot");
-        Assert.True(board.ObjectsOnTheBoard.Count() == 0);
+        Assert.True(board.objectsOnTheBoard.Count() == 0);
     }
 
     [Test]
@@ -23,7 +23,7 @@ internal class TestsPlaceRobot
     {
         RobotGame.GameBoard board = new(1, 1, 5, 5);
         board.placeRobot("place_robot 6,6,NORTH");
-        Assert.True(board.ObjectsOnTheBoard.Count() == 0);
+        Assert.True(board.objectsOnTheBoard.Count() == 0);
     }
 
     [Test]
@@ -31,7 +31,7 @@ internal class TestsPlaceRobot
     {
         RobotGame.GameBoard board = new(1, 1, 5, 5);
         board.placeRobot("place_robot 0,0,SOUTH");
-        Assert.True(board.ObjectsOnTheBoard.Count() == 0);
+        Assert.True(board.objectsOnTheBoard.Count() == 0);
     }
 
     [Test]
@@ -39,7 +39,7 @@ internal class TestsPlaceRobot
     {
         RobotGame.GameBoard board = new(1, 1, 5, 5);
         board.placeRobot("place_robot 1,1,A");
-        Assert.True(board.ObjectsOnTheBoard.Count() == 0);
+        Assert.True(board.objectsOnTheBoard.Count() == 0);
     }
 
     [Test]
@@ -47,7 +47,7 @@ internal class TestsPlaceRobot
     {
         RobotGame.GameBoard board = new(1, 1, 5, 5);
         board.placeRobot("place_robot 1,1,NORTH");
-        Robot robot = (Robot)board.ObjectsOnTheBoard.First();
+        Robot robot = (Robot)board.objectsOnTheBoard.First();
         Assert.True(robot.positionX == 1 && robot.positionY == 1 && robot.faceDirection == Directions.directions.NORTH);
     }
 
@@ -56,7 +56,7 @@ internal class TestsPlaceRobot
     {
         RobotGame.GameBoard board = new(1, 1, 5, 5);
         board.placeRobot("place_robot 5,3,EAST");
-        Robot robot = (Robot)board.ObjectsOnTheBoard.First();
+        Robot robot = (Robot)board.objectsOnTheBoard.First();
         Assert.True(robot.positionX == 5 && robot.positionY == 3 && robot.faceDirection == Directions.directions.EAST);
     }
 }

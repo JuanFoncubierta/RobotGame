@@ -7,7 +7,7 @@ internal class TestsCommandHandler
     {
         RobotGame.GameBoard board = new(1, 1, 5, 5);
         InputHandler.handleCommandsForGame("fallar",board);
-        Assert.True(board.ObjectsOnTheBoard.Count() == 0);
+        Assert.True(board.objectsOnTheBoard.Count() == 0);
     }
 
     [Test]
@@ -15,7 +15,7 @@ internal class TestsCommandHandler
     {
         RobotGame.GameBoard board = new(1, 1, 5, 5);
         InputHandler.handleCommandsForGame("",board);
-        Assert.True(board.ObjectsOnTheBoard.Count() == 0);
+        Assert.True(board.objectsOnTheBoard.Count() == 0);
     }
 
     [Test]
@@ -23,7 +23,7 @@ internal class TestsCommandHandler
     {
         RobotGame.GameBoard board = new(1, 1, 5, 5);
         InputHandler.handleCommandsForGame("move",board);
-        Assert.True(board.ObjectsOnTheBoard.Count() == 0);
+        Assert.True(board.objectsOnTheBoard.Count() == 0);
     }
 
     [Test]
@@ -31,7 +31,7 @@ internal class TestsCommandHandler
     {
         RobotGame.GameBoard board = new(1, 1, 5, 5);
         InputHandler.handleCommandsForGame("left",board);
-        Assert.True(board.ObjectsOnTheBoard.Count() == 0);
+        Assert.True(board.objectsOnTheBoard.Count() == 0);
     }
 
     [Test]
@@ -39,6 +39,6 @@ internal class TestsCommandHandler
     {
         RobotGame.GameBoard board = new(1, 1, 5, 5);
         InputHandler.handleCommandsForGame("right", board);
-        Assert.True(board.ObjectsOnTheBoard.Count() == 0);
+        Assert.True(board.objectsOnTheBoard.Count() == 0);
     }
 }

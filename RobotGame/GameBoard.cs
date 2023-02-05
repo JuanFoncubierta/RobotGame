@@ -2,7 +2,7 @@
 
 public class GameBoard
 {
-    public List<BoardObject> ObjectsOnTheBoard;
+    public List<BoardObject> objectsOnTheBoard;
     public int minX;
     public int minY;
     public int maxX;
@@ -10,7 +10,7 @@ public class GameBoard
 
     public GameBoard(int _minX, int _minY, int _maxX, int _maxY)
     {
-        ObjectsOnTheBoard = new();
+        objectsOnTheBoard = new();
         minX = _minX;
         minY = _minY;
         maxX = _maxX;
@@ -19,7 +19,7 @@ public class GameBoard
 
     public void ResetGame()
     {
-        ObjectsOnTheBoard.Clear();
+        objectsOnTheBoard.Clear();
     }
 
     public void placeRobot(string command)
@@ -40,19 +40,19 @@ public class GameBoard
         if (x < minX || x > maxX || y < minY || y > maxY) return;
 
         //if there is a wall we remove it
-        if (CoordinateOcupied(x, y))
-            ObjectsOnTheBoard.Remove(ObjectsOnTheBoard.Where(obj => obj.positionX == x && obj.positionY == y).First());
+        if (BoardChecker.CoordinateOcupied(x, y, this))
+            objectsOnTheBoard.Remove(objectsOnTheBoard.Where(obj => obj.positionX == x && obj.positionY == y).First());
 
-        if (ObjectsOnTheBoard.Where(x => x.GetType().Name == "ClassRobot").Count() > 0)
+        if (objectsOnTheBoard.Where(x => x.GetType().Name == "ClassRobot").Count() > 0)
         {
-            Robot robot = (Robot)(ObjectsOnTheBoard.Where(x => x.GetType().Name == "ClassRobot").First());
+            Robot robot = (Robot)(objectsOnTheBoard.Where(x => x.GetType().Name == "ClassRobot").First());
             robot.positionX = x;
             robot.positionY = y;
             robot.faceDirection = faceDirection;
         }
         else
         {
-            ObjectsOnTheBoard.Add(new Robot(splitData[2], x, y));
+            objectsOnTheBoard.Add(new Robot(splitData[2], x, y));
         }
     }
 
@@ -70,14 +70,9 @@ public class GameBoard
 
         if (x < minX || x > maxX || y < minY || y > maxY) return;
 
-        if (CoordinateOcupied(x, y)) return;
+        if (BoardChecker.CoordinateOcupied(x, y,this)) return;
 
-        ObjectsOnTheBoard.Add(new Wall(x, y));
+        objectsOnTheBoard.Add(new Wall(x, y));
     }
 
-    public bool CoordinateOcupied(int _x, int _y)
-    {
-        if (ObjectsOnTheBoard.Where(x => x.positionX == _x && x.positionY == _y).Any()) return true;
-        return false;
-    }
 }

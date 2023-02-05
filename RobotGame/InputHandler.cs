@@ -11,19 +11,19 @@ public static class InputHandler
             board.placeWall(command);
 
         //if is not one of the above we need the robot to exist
-        if (!IsThereARobot(board)) return;
+        if (!BoardChecker.IsThereARobot(board)) return;
 
         if (command.ToLower() == "report")
             report(board);
 
         if (command.ToLower() == "move")
-            ((Robot)(board.ObjectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First())).move(board);
+            ((Robot)(board.objectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First())).move(board);
 
         if (command.ToLower() == "left")
-            ((Robot)(board.ObjectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First())).left();
+            ((Robot)(board.objectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First())).left();
 
         if (command.ToLower() == "right")
-            ((Robot)(board.ObjectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First())).right();
+            ((Robot)(board.objectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First())).right();
 
         if (command.ToLower() == "reset")
             board.ResetGame();
@@ -32,15 +32,11 @@ public static class InputHandler
             System.Environment.Exit(1);
     }
 
-    public static bool IsThereARobot(GameBoard board)
-    {
-        if (board.ObjectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).Any()) return true;
-        return false;
-    }
+    
 
     public static void report(GameBoard board)
     {
-        Robot robot = (Robot)board.ObjectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First();
+        Robot robot = (Robot)board.objectsOnTheBoard.Where(x => x.boardObjectType == BoardObjectType.Robot).First();
         Console.WriteLine(robot.positionX + "," + robot.positionY + "," + robot.faceDirection.ToString());
     }
 }
